@@ -15,4 +15,4 @@
 
 4. （可选）：实现路由
 
-   后续补充
+   实现[加权轮询路由](https://github.com/vinceDa/JavaCourseCodes/blob/main/02nio/nio02/src/main/java/io/github/kimmking/gateway/router/MyRandomHttpEndpointRouter.java)
