@@ -1,55 +1,64 @@
 2.（必做）基于电商交易场景（用户、商品、订单），设计一套简单的表结构，提交DDL的SQL文件到Github（后面2周的作业依然要是用到这个表结构）。
 
 ```sql
-CREATE TABLE `t_user` (
-    `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
-    `username` VARCHAR(32) NOT NULL COMMENT '用户名',
-    `mobile` VARCHAR(20) DEFAULT '' COMMENT '手机号',
-    `nickname` VARCHAR(32) DEFAULT '' COMMENT '昵称',
-    `password` VARCHAR(32) DEFAULT '' COMMENT '密码',
-    `create_time` DATETIME COMMENT '创建时间',
-    `status` TINYINT(1) DEFAULT 0 COMMENT '状态，0：启用，1：停用',
-    PRIMARY KEY(`id`)
-)ENGINE=InnoDB CHARSET=utf8mb4 COMMENT '用户基本信息表';
-
-CREATE TABLE  `t_goods` (
-    `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(64) NOT NULL COMMENT '商品名称',
-    `price` BIGINT(20) NOT NULL COMMENT '商品价格，单位：分',
-    `desc` VARCHAR(255) DEFAULT '' COMMENT '商品描述',
-    `images` VARCHAR(512) DEFAULT '' COMMENT '商品图片', 
-    `create_time` DATETIME COMMENT '创建时间',
-    `update_time` DATETIME COMMENT '修改时间',
-    `status` TINYINT(1) DEFAULT 0 COMMENT '状态，0：启用，1：停用',
-     PRIMARY KEY(`id`)
-)ENGINE=InnoDB CHARSET=utf8mb4 COMMENT '商品基本信息表';
+DROP TABLE IF EXISTS `shop_goods`;
+CREATE TABLE `shop_goods`  (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '商品名称',
+  `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '商品描述',
+  `thumbnail_url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT ' 缩略图地址',
+  `price` decimal(10, 2) NULL DEFAULT NULL COMMENT '商品价格',
+  `is_deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `create_time` datetime(0) NULL DEFAULT NULL,
+  `update_time` datetime(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '商品表' ROW_FORMAT = Dynamic;
 
 
-CREATE TABLE  `t_order` (
-    `order_no` VARCHAR(32) NOT NULL COMMENT '订单号',
-    `user_id` BIGINT(20) NOT NULL COMMENT '用户id',
-    `mobile` VARCHAR(20) NOT NULL COMMENT '用户手机',
-    `total_amount` BIGINT(20) NOT NULL COMMENT '商品总价格，单位：分',
-    `goods_number` INT NOT NULL COMMENT '商品数量',
-    `status` TINYINT(1) DEFAULT 1 COMMENT '订单状态，1 待付款 2 待发货 3 待收货 4 已完成 5 已关闭',
-    `create_time` DATETIME COMMENT '下单时间',
-    `pay_time` DATETIME COMMENT '支付时间',
-    `delivery_time` DATETIME COMMENT '发货时间',
-    `finish_time` DATETIME COMMENT '完成时间',
-    `close_time` DATETIME COMMENT '关闭时间',
-    PRIMARY KEY(`order_no`)
-)ENGINE=InnoDB CHARSET=utf8mb4 COMMENT '订单表';
+DROP TABLE IF EXISTS `shop_order`;
+CREATE TABLE `shop_order`  (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) NOT NULL COMMENT '用户id',
+  `goods_id` bigint(20) NOT NULL COMMENT '商品id',
+  `goods_count` int(12) NULL DEFAULT NULL COMMENT '商品数量',
+  `status` char(2) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '订单状态：01：未支付；02：已支付；03：未发货；04：已发货；05：已完成',
+  `pay_time` datetime(0) NULL DEFAULT NULL COMMENT '支付时间',
+  `delivery_time` datetime(0) NULL DEFAULT NULL COMMENT '发货时间',
+  `finish_time` datetime(0) NULL DEFAULT NULL COMMENT '完成时间',
+  `create_time` datetime(0) NULL DEFAULT NULL,
+  `update_time` datetime(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '订单表' ROW_FORMAT = Dynamic;
 
-CREATE TABLE  `t_order_detail` (
-    `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
-    `order_no` VARCHAR(32) NOT NULL COMMENT '订单号',
-    `goods_id` BIGINT(20) NOT NULL COMMENT '商品id',
-    `goods_name` VARCHAR(64) NOT NULL COMMENT '商品名称',
-    `goods_price` BIGINT(20) NOT NULL COMMENT '商品价格，单位：分',
-    `goods_number` INT NOT NULL COMMENT '商品数量',
-    `create_time` DATETIME COMMENT '创建时间',
-    `update_time` DATETIME COMMENT '修改时间',
-    PRIMARY KEY(`id`)
-)ENGINE=InnoDB CHARSET=utf8mb4 COMMENT '订单详情表';
+
+DROP TABLE IF EXISTS `shop_order_detail`;
+CREATE TABLE `shop_order_detail`  (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `goods_id` bigint(20) NOT NULL COMMENT '商品id',
+  `goods_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '商品名称',
+  `goods_price` decimal(10, 2) NULL DEFAULT NULL COMMENT '商品价格',
+  `order_id` bigint(20) NOT NULL COMMENT '订单id',
+  `goods_count` int(12) NULL DEFAULT NULL COMMENT '商品数量',
+  `create_time` datetime(0) NULL DEFAULT NULL,
+  `update_time` datetime(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '订单详情表' ROW_FORMAT = Dynamic;
+
+
+DROP TABLE IF EXISTS `shop_user`;
+CREATE TABLE `shop_user`  (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户名',
+  `nickname` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '昵称',
+  `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '密码',
+  `phone` varchar(16) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '手机号码',
+  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '邮箱',
+  `status` tinyint(1) NULL DEFAULT NULL COMMENT '用户状态：0：禁用；1：启用',
+  `is_deleted` tinyint(1) NOT NULL DEFAULT 0 COMMENT '逻辑删除',
+  `create_time` datetime(0) NULL DEFAULT NULL,
+  `update_time` datetime(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户表' ROW_FORMAT = Dynamic;
+
 ```
 
