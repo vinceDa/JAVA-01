@@ -1,6 +1,6 @@
-package com.xianyanyang.rpc.client.proxy;
+package com.ohyoung.rpc.client.proxy;
 
-import com.xianyanyang.rpc.exception.RpcException;
+import com.ohyoung.rpc.exception.RpcException;
 
 public interface ProxyFactory {
 

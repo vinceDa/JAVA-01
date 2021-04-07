@@ -1,8 +1,8 @@
-package com.xianyanyang.rpc.client.protocol.impl;
+package com.ohyoung.rpc.client.protocol.impl;
 
-import com.xianyanyang.rpc.RpcRequest;
-import com.xianyanyang.rpc.URL;
-import com.xianyanyang.rpc.client.protocol.Protocol;
+import com.ohyoung.rpc.RpcRequest;
+import com.ohyoung.rpc.URL;
+import com.ohyoung.rpc.client.protocol.Protocol;
 
 public class NettyProtocol implements Protocol  {
     @Override

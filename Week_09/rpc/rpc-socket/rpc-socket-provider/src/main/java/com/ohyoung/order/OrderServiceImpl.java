@@ -1,7 +1,7 @@
-package com.xianyanyang.order;
+package com.ohyoung.order;
 
-import com.xianyanyang.order.domain.entity.Order;
-import com.xianyanyang.order.domain.service.OrderService;
+import com.ohyoung.order.domain.entity.Order;
+import com.ohyoung.order.domain.service.OrderService;
 
 public class OrderServiceImpl implements OrderService {
 

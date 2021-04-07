@@ -1,4 +1,4 @@
-package com.xianyanyang.rpc;
+package com.ohyoung.rpc;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

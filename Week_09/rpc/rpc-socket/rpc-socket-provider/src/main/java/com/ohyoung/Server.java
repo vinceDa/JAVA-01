@@ -1,15 +1,15 @@
-package com.xianyanyang;
+package com.ohyoung;
 
-import com.xianyanyang.impl.RpcRequestResolver;
-import com.xianyanyang.order.OrderServiceImpl;
-import com.xianyanyang.order.domain.service.OrderService;
-import com.xianyanyang.rpc.register.RegisterCenter;
-import com.xianyanyang.rpc.RequestResolver;
-import com.xianyanyang.rpc.URL;
-import com.xianyanyang.rpc.register.ServiceRegister;
-import com.xianyanyang.rpc.server.ServerSkeleton;
-import com.xianyanyang.user.UserServiceImpl;
-import com.xianyanyang.user.domain.service.UserService;
+import com.ohyoung.impl.RpcRequestResolver;
+import com.ohyoung.order.OrderServiceImpl;
+import com.ohyoung.order.domain.service.OrderService;
+import com.ohyoung.rpc.register.RegisterCenter;
+import com.ohyoung.rpc.RequestResolver;
+import com.ohyoung.rpc.URL;
+import com.ohyoung.rpc.register.ServiceRegister;
+import com.ohyoung.rpc.server.ServerSkeleton;
+import com.ohyoung.user.UserServiceImpl;
+import com.ohyoung.user.domain.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

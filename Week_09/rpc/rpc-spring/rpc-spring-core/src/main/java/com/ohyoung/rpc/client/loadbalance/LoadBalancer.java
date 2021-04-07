@@ -1,6 +1,6 @@
-package com.xianyanyang.rpc.client.loadbalance;
+package com.ohyoung.rpc.client.loadbalance;
 
-import com.xianyanyang.rpc.URL;
+import com.ohyoung.rpc.URL;
 
 import java.util.List;
 

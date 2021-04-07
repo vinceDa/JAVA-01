@@ -1,13 +1,13 @@
-package com.xianyanyang.rpc.client.proxy.impl;
+package com.ohyoung.rpc.client.proxy.impl;
 
 import com.alibaba.fastjson.parser.ParserConfig;
-import com.xianyanyang.rpc.RpcRequest;
-import com.xianyanyang.rpc.URL;
-import com.xianyanyang.rpc.client.loadbalance.LoadBalancer;
-import com.xianyanyang.rpc.client.protocol.Protocol;
-import com.xianyanyang.rpc.client.proxy.ProxyFactory;
-import com.xianyanyang.rpc.exception.RpcException;
-import com.xianyanyang.rpc.register.RegisterCenter;
+import com.ohyoung.rpc.RpcRequest;
+import com.ohyoung.rpc.URL;
+import com.ohyoung.rpc.client.loadbalance.LoadBalancer;
+import com.ohyoung.rpc.client.protocol.Protocol;
+import com.ohyoung.rpc.client.proxy.ProxyFactory;
+import com.ohyoung.rpc.exception.RpcException;
+import com.ohyoung.rpc.register.RegisterCenter;
 import org.springframework.cglib.proxy.Enhancer;
 import org.springframework.cglib.proxy.MethodInterceptor;
 

@@ -1,6 +1,6 @@
-package com.xianyanyang.rpc.register;
+package com.ohyoung.rpc.register;
 
-import com.xianyanyang.rpc.URL;
+import com.ohyoung.rpc.URL;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.io.FileUtils;
 

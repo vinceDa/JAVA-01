@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="rpc-socket-provider" />
+        <module name="cache" />
+        <module name="rpc-socket-core" />
+        <module name="mybatis-cache" />
+        <module name="rpc-domain-api" />
+        <module name="rpc-socket-consumer" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="cache" target="8" />
+      <module name="mybatis-cache" target="8" />
+      <module name="nio" target="8" />
+      <module name="rpc" target="1.7" />
+      <module name="rpc-domain-api" target="1.7" />
+      <module name="rpc-socket" target="1.7" />
+      <module name="rpc-socket-consumer" target="1.7" />
+      <module name="rpc-socket-core" target="8" />
+      <module name="rpc-socket-provider" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="cache" options="-parameters" />
+    </option>
+  </component>
+</project>

@@ -1,7 +1,6 @@
-package com.xianyanyang.rpc.register;
+package com.ohyoung.rpc.register;
 
 import java.util.HashMap;
-import java.util.IdentityHashMap;
 import java.util.Map;
 
 /**

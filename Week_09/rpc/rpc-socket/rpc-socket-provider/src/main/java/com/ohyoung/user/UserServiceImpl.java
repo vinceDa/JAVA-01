@@ -1,7 +1,7 @@
-package com.xianyanyang.user;
+package com.ohyoung.user;
 
-import com.xianyanyang.user.domain.entity.User;
-import com.xianyanyang.user.domain.service.UserService;
+import com.ohyoung.user.domain.entity.User;
+import com.ohyoung.user.domain.service.UserService;
 
 public class UserServiceImpl implements UserService {
 

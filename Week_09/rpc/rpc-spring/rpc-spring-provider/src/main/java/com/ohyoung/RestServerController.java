@@ -1,8 +1,8 @@
-package com.xianyanyang;
+package com.ohyoung;
 
-import com.xianyanyang.rpc.RpcRequest;
-import com.xianyanyang.rpc.RpcResponse;
-import com.xianyanyang.rpc.server.ServerSkeleton;
+import com.ohyoung.rpc.RpcRequest;
+import com.ohyoung.rpc.RpcResponse;
+import com.ohyoung.rpc.server.ServerSkeleton;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

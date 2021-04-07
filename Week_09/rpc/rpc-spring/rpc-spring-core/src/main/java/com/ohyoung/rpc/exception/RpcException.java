@@ -1,4 +1,4 @@
-package com.xianyanyang.rpc.exception;
+package com.ohyoung.rpc.exception;
 
 public class RpcException extends RuntimeException {
     private final String code;

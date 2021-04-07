@@ -1,7 +1,7 @@
-package com.xianyanyang;
+package com.ohyoung;
 
-import com.xianyanyang.rpc.RequestResolver;
-import com.xianyanyang.rpc.register.ServiceRegister;
+import com.ohyoung.rpc.RequestResolver;
+import com.ohyoung.rpc.register.ServiceRegister;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

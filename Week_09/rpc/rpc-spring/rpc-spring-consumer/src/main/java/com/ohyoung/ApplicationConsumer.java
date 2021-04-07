@@ -1,13 +1,13 @@
-package com.xianyanyang;
+package com.ohyoung;
 
-import com.xianyanyang.rpc.client.loadbalance.LoadBalancer;
-import com.xianyanyang.rpc.client.protocol.Protocol;
-import com.xianyanyang.rpc.client.proxy.ProxyFactory;
-import com.xianyanyang.rpc.client.protocol.impl.NettyProtocol;
-import com.xianyanyang.rpc.client.protocol.impl.SpringRestOperationsProtocol;
-import com.xianyanyang.rpc.client.loadbalance.impl.RandomLoadBalancer;
-import com.xianyanyang.rpc.client.proxy.impl.CGLibProxy;
-import com.xianyanyang.rpc.client.proxy.impl.DynamicProxy;
+import com.ohyoung.rpc.client.loadbalance.LoadBalancer;
+import com.ohyoung.rpc.client.protocol.Protocol;
+import com.ohyoung.rpc.client.proxy.ProxyFactory;
+import com.ohyoung.rpc.client.protocol.impl.NettyProtocol;
+import com.ohyoung.rpc.client.protocol.impl.SpringRestOperationsProtocol;
+import com.ohyoung.rpc.client.loadbalance.impl.RandomLoadBalancer;
+import com.ohyoung.rpc.client.proxy.impl.CGLibProxy;
+import com.ohyoung.rpc.client.proxy.impl.DynamicProxy;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
