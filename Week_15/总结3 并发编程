@@ -1,0 +1,67 @@
+一、
+多线程的本质原因是摩尔定律失效 -> 多核+分布式时代的来临
+
+  1.多线程基础
+    进程和线程的区别：
+      一个服务是一个进程，服务包含很多线程，进程之间的资源是相互独立的
+    线程的状态：
+      runnable blocked waiting timed waiting terminated
+    Thread类
+      start sleep yield join
+    Object类
+      wait notify notifyAll
+  2.线程安全
+    同步块Syncronized ：偏向锁，轻量锁，重量锁，Collection》synchronize
+    可见性：volatile（缓存导致的可见性问题，volatile禁用缓存） 上锁
+    有序性： happens-before原则：A happens-before B就是A先行发生于B(编译优化带来的有序性问题，new 对象时很有可能是先给地址，在实例化对象)
+    原子性： 线程切换带来的原子性问题，锁（管程的具体实现）
+    
+    秦老师说：其实缓存、线程、编译优化的目的和我们写并发程序的目的是相同的，都是提高程序性能。
+    但是技术在解决一个问题的同时，必然会带来另外一个问题，所以在采用一项技术的同时，一定要清楚它带来的问题是什么，以及如何规避。
+  3.JUC
+      synchronized修饰静态方法锁class，修饰实例方法锁实例对象
+      加了synchronized修饰的方法，反汇编出来后可以看到指令被monitorenter和2个monitorexit包裹，最后一个保证一定能退出
+      锁的升级：先获取偏向锁，第一次比较threadid，如果不一致升级为轻量级锁，自旋一定次数来获取锁，如果还没有获取到锁，就升级为重量锁，等待。这个是继java6之后的重大优化，提升了synchronized的效率。
+      synchronized和lock的区别：加锁范围不一样，释放锁的方式
+      volatile保证可见性和禁止指令重排，提供happens-before保证
+      乐观锁和悲观锁
+      CAS自旋：多见于原子类，容易产生ABA的问题（通过加版本号解决），高并发的时候CPU消耗比较大，只能保证一个变量的原子性；
+      死锁与活锁：活锁是一直无法满足条件，一直等待
+      AQS：并发工具类的鼻祖，构建锁和同步器的框架，使用了模板方法模式；
+      AQS资源共享方式：独占reentrantLock，共享semaphere，countDownLatch，cyclicBarrier，readWriteLock
+      ConcurrentHashMap：1.6 segment分段锁给hash槽加锁，1.8开始使用CAS+synchronized
+      CopyOnWriteArrayList：通过副本的方式类实现线程安全，适合读多写少的场景，毕竟复制的代价还是很高的
+      ThreadLocal：线程本地变量，在线程内部共享，内部维护了一个ThreadLocalMap，为了防止内存泄漏，建议set，get使用完，最后remove。
+      
+      ArrayBlockingQueue ：一个由数组结构组成的有界阻塞队列。
+      
+      LinkedBlockingQueue ：一个由链表结构组成的有界阻塞队列。
+
+      PriorityBlockingQueue ：一个支持优先级排序的无界阻塞队列。
+
+      DelayQueue：一个使用优先级队列实现的无界阻塞队列。
+
+      SynchronousQueue：一个不存储元素的阻塞队列。
+
+      LinkedTransferQueue：一个由链表结构组成的无界阻塞队列。
+
+      LinkedBlockingDeque：一个由链表结构组成的双向阻塞队列。
+
+      ConcurrentLinkedQueue：单端非阻塞
+
+      ConcurrentLinkedDeque：双端非阻塞
+  4.线程池
+    线程池创建方式
+      newSingleThreadExecutor：创建一个单线程的线程池
+      newFixedThreadPool：创建固定大小的线程池
+      newCachedThreadPool：创建一个可缓存的线程池
+      newScheduledThreadPool：创建一个大小无限的线程池
+    线程池优点：降低资源消耗，提高响应速度，统一管理
+    线程池的状态：running shutdown stop tidying terminated
+    线程池submit和execute区别：submit可以执行runnable和callable，可以拿到future
+    阿里推荐使用ThreadPoolExecutor，因为上面几种executor容易导致OOM
+    ThreadPoolExecutor核心参数：核心数，最大线程数，工作队列，线程时间，时间单位，new ThreadFactory，队列放满拒绝策略handler
+    拒绝策略：直接拒绝抛异常、当前线程执行任务、不处理丢弃掉、丢弃最早未处理的任务，建议自己来维护策略
+
+  5.Stream
+    parallel
